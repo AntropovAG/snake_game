@@ -6,7 +6,6 @@ class Board {
     }
 
     drawBoard() {
-        console.log("drawing board");
         for (let i = 0; i < this.width; i++) {
             for(let j = 0; j < this.height; j++) {
                 const cell = document.createElement("div");
