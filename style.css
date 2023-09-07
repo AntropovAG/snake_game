@@ -1,0 +1,21 @@
+.container {
+    display: grid;
+    width: 400px;
+    height: 400px;
+    grid-template-columns: repeat(10, 40px);
+    grid-template-rows: repeat(10, 40px);
+}
+
+.cell {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+}
+
+.snake {
+    background-color: cadetblue;
+}
+
+.apple {
+    background-color: chocolate;
+}
