@@ -13,6 +13,10 @@ class Score{
         }
     }
 
+    resetScore() {
+        this.score = 0;
+    }
+
     displayScore() {
         if (this.score > this.maxScore) {
             this.maxScore = this.score;

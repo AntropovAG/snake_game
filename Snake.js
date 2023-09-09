@@ -3,7 +3,6 @@ class Snake {
         this.segments = [
             {x: 6, y: 5},
             {x: 5, y: 5},
-            
         ];
         this.cells = cells;
         this.direction = direction;

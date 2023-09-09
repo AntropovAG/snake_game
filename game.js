@@ -136,6 +136,8 @@ class Game {
         ];
         this.drawSnake();
         this.generateApple();
+        this.score.resetScore();
+        this.direction = "right";
         this.score.displayScore();
         this.intervalId = setInterval(() => this.update(), 500);
     }
