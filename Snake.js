@@ -12,20 +12,16 @@ class Snake {
         const newHead = {...this.segments[0]};
         switch (this.direction) {
             case "left": 
-            newHead.x -= 1;
-            if(newHead.x < 0) newHead.x = this.cells.length - 1;
+                newHead.x -= 1;
                 break;
             case "right": 
-            newHead.x += 1;
-            if(newHead.x > this.cells.length - 1) newHead.x = 0;
+                newHead.x += 1;
                 break;
             case "up": 
-            newHead.y -= 1;
-            if(newHead.y < 0) newHead.y = this.cells.length - 1;
+                newHead.y -= 1;
                 break;
             case "down": 
-            newHead.y += 1;
-            if(newHead.y > this.cells.length - 1) newHead.y = 0;
+                newHead.y += 1;
                 break;
         }
         this.segments.unshift(newHead);

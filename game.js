@@ -68,15 +68,20 @@ class Game {
     update() {
         this.snake.direction = this.direction;
         this.snake.move();
+        if(this.snake.segments[0].x > this.cells.length - 1 || this.snake.segments[0].x < 0 && this.snake.segments[0].y > this.cells.length - 1 || this.snake.segments[0].y < 0) {
+            this.endGame();
+            return;
+        }
+
         this.drawSnakeHead();
         let snake = this.snake;
         if(this.snake.segments.some(function (segment, index) {
             if (index === 0) return false;
             return (segment.x === snake.segments[0].x && segment.y === snake.segments[0].y)
-        }
-        )) {
+        })) {
             this.endGame();
         }
+
 
         if(this.snake.segments[0].x === this.apple.position.x && this.snake.segments[0].y === this.apple.position.y) {
             this.hideApple();

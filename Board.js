@@ -7,10 +7,9 @@ class Board {
     }
 
     drawBoard() {
-        for (let i = 0; i < this.width; i++) {
+        for(let i = 0; i < this.width; i++) {
             this.cells[i] = [];
             for(let j = 0; j < this.height; j++) {
-
                 const cell = document.createElement("div");
                 cell.classList.add('cell');
                 cell.dataset.x = i;
@@ -20,11 +19,6 @@ class Board {
             }
         }
     }
-
-    resetBoard() {
-
-    }
-
 }
 
 export default Board;

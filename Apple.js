@@ -1,6 +1,6 @@
 class Apple {
     constructor() {
-        this.position = {x: 8, y: 5};
+        this.position = {x: 1, y: 1};
     }
 
     setPosition(x, y) {
