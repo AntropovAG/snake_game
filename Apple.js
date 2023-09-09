@@ -1,14 +1,13 @@
 class Apple {
-    constructor(rows, columns) {
-        this.rows = rows;
-        this.columns = columns;
-        this.position = {x: '2', y: '2'};
+    constructor() {
+        this.position = {x: 8, y: 5};
     }
 
     setPosition(x, y) {
-        this.position.x = toString(x);
-        this.position.y = toString(y);
+        this.position.x = x;
+        this.position.y = y;
     }
+
 }
 
 export default Apple;

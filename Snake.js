@@ -1,45 +1,43 @@
 class Snake {
-    constructor()  {
+    constructor(cells, direction)  {
         this.segments = [
-            {x: '5', y: '5'},
-            {x: '6', y: '5'},
+            {x: 6, y: 5},
+            {x: 5, y: 5},
+            
         ];
+        this.cells = cells;
+        this.direction = direction;
     }
 
-    move(direction) {
-        const head = Object.assign({}, this.segments[0]);
+    move() {
+        const newHead = {...this.segments[0]};
         switch (this.direction) {
             case "left": 
-                head.x -= 1;
+            newHead.x -= 1;
+            if(newHead.x < 0) newHead.x = this.cells.length - 1;
                 break;
             case "right": 
-                head.x += 1;
+            newHead.x += 1;
+            if(newHead.x > this.cells.length - 1) newHead.x = 0;
                 break;
             case "up": 
-                head.y -= 1;
+            newHead.y -= 1;
+            if(newHead.y < 0) newHead.y = this.cells.length - 1;
                 break;
             case "down": 
-                head.y += 1;
+            newHead.y += 1;
+            if(newHead.y > this.cells.length - 1) newHead.y = 0;
                 break;
         }
-        this.segments.unshift(head);
-        this.segments.pop();
+        this.segments.unshift(newHead);
     }
 
     getHeadLocation() {
         return this.segments[0];
     }
 
-    eatApple(applePosition) {
-        const head = this.getHeadLocation();
-        if(head.x === applePosition.x && head.y === applePosition.y) {
-            return true;
-        }   
-            return false;
-    };
-
-    isCollided(x, y) {
-        return this.segments.some(segment => segment.x === x && segment.y === y);
+    getTailLocation() {
+        return this.segments[this.segments.length - 1];
     }
 }
 
