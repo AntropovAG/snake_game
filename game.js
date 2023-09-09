@@ -19,13 +19,19 @@ class Game {
         this.snake = new Snake(this.cells, this.direction);
         this.storedScore = localStorage.getItem('max_score') ? localStorage.getItem('max_score') : 0;
         this.score = new Score(this.currentScoreElement, this.maxScoreElement, this.storedScore);
+        this.handler = this.startGame.bind(this);
+        this.container.addEventListener('click', this.handler);
+        document.addEventListener('keydown', this.control.bind(this));
+        this.restartButton.addEventListener('click', () => this.restartGame());
+    }
+
+    startGame() {
         this.board.drawBoard();
         this.drawSnake();
         this.generateApple();
         this.score.displayScore();
-        document.addEventListener('keydown', this.control.bind(this));
         this.intervalId = setInterval(() => this.update(), 500);
-        this.restartButton.addEventListener('click', () => this.restartGame());
+        this.container.removeEventListener('click', this.handler);
     }
 
     drawSnake() {
@@ -68,7 +74,7 @@ class Game {
     update() {
         this.snake.direction = this.direction;
         this.snake.move();
-        if(this.snake.segments[0].x > this.cells.length - 1 || this.snake.segments[0].x < 0 && this.snake.segments[0].y > this.cells.length - 1 || this.snake.segments[0].y < 0) {
+        if(this.snake.segments[0].x > this.cells.length - 1 || this.snake.segments[0].x < 0 || this.snake.segments[0].y > this.cells.length - 1 || this.snake.segments[0].y < 0) {
             this.endGame();
             return;
         }
